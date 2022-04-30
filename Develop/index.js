@@ -1,6 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-// const fs = require('fs');
+const fs = require('fs');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -75,12 +75,59 @@ const questions = [
           type: 'input',
           name: 'email',
           message: "What is your email address?",
-        },
-  ])
+        }
+  ]).then(({
+    title,
+    description,
+    instructions,
+    usage,
+    guidelines,
+    test,
+    license,
+    username,
+    email
+  })=> { 
+    const template = `# ${title}
+    
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+    
+* [Description](#description)
+* [Instrucitons](#instructions)
+* [Usage](#usage)
+* [Guidelines](#guidelines)
+* [Test](#test)
+* [License](#license)
+# Description
+    ${description}
+# Instructions
+    ${instructions}
+## Usage
+    ${usage}
+## Guidelines
+    ${guidelines}
+## Test
+    ${test}
+## License
+    ${license}
+    
+### Contact
+* GitHub : ${username}
+* Email : ${email}`
+
+    writeToFile (title, template);
+
+  })
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  fs.writeFile(`./README.md`, data, (err) => {
+    if (err) {
+      console.log(err)
+    }
+    console.log("README Generated!");
+  })
+}
 
 // TODO: Create a function to initialize app
 function init() {}
