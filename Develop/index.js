@@ -90,7 +90,6 @@ const questions = [
 
     let licenseChosen = "";
 
-    console.log(license);
 
     // switch statement
 
@@ -119,29 +118,28 @@ const questions = [
 
     const template = `# ${title}
     
-  ${licenseChosen}
+  ${licenseChosen} *Click badge for license info*
     
 * [Description](#description)
-* [Instrucitons](#instructions)
+* [Instructions](#instructions)
 * [Usage](#usage)
 * [Guidelines](#guidelines)
 * [Test](#test)
-* [License](#license)
+
 # Description
-    ${description}
+${description}
 # Instructions
-    ${instructions}
+${instructions}
 ## Usage
-    ${usage}
+${usage}
 ## Guidelines
-    ${guidelines}
+${guidelines}
 ## Test
-    ${test}
-## License
-    ${license}
+${test}
+
     
 ### Contact
-* GitHub : ${username}
+* GitHub : [github.com/${username}](https://github.com/${username})
 * Email : ${email}`
 
     writeToFile (title, template);
